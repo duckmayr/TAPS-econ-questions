@@ -12,54 +12,84 @@ observed answer choices underneath each question):
 -   ECON1A: \[in your household\] Are the economic conditions in your
     household and in the countryare getting better, worse, or not
     changing much?
-    -   Refused
-    -   Getting much better
-    -   Getting somewhat better
-    -   Not changing much
-    -   Getting somewhat worse
-    -   Getting much worse
-    -   Not sure
+    -   Refused (coded in the datasets here as `NA`)
+    -   Getting much better (coded in the datasets here as 5)
+    -   Getting somewhat better (coded in the datasets here as 4)
+    -   Not changing much (coded in the datasets here as 3)
+    -   Getting somewhat worse (coded in the datasets here as 2)
+    -   Getting much worse (coded in the datasets here as 1)
+    -   Not sure (coded in the datasets here as `NA`)
 -   ECON1B: \[In the country as a whole\] Are the economic conditions in
     your household and in the countryare getting better, worse, or not
     changing much?
-    -   Refused
-    -   Getting much better
-    -   Getting somewhat better
-    -   Not changing much
-    -   Getting somewhat worse
-    -   Getting much worse
-    -   Not sure
+    -   Refused (coded in the datasets here as `NA`)
+    -   Getting much better (coded in the datasets here as 5)
+    -   Getting somewhat better (coded in the datasets here as 4)
+    -   Not changing much (coded in the datasets here as 3)
+    -   Getting somewhat worse (coded in the datasets here as 2)
+    -   Getting much worse (coded in the datasets here as 1)
+    -   Not sure (coded in the datasets here as `NA`)
 -   ECON2A: \[In your household\] Are the current economic conditions in
     your household and in the country excellent, good, only fair, or
     poor?
-    -   Refused
-    -   Excellent
-    -   Good
-    -   Only fair
-    -   Poor
-    -   Not sure
+    -   Refused (coded in the datasets here as `NA`)
+    -   Excellent (coded in the datasets here as 4)
+    -   Good (coded in the datasets here as 3)
+    -   Only fair (coded in the datasets here as 2)
+    -   Poor (coded in the datasets here as 1)
+    -   Not sure (coded in the datasets here as `NA`)
 -   ECON2B: \[In the country as a whole\] Are the current economic
     conditions in your household and in the country excellent, good,
     only fair, or poor?
-    -   Refused
-    -   Excellent
-    -   Good
-    -   Only fair
-    -   Poor
-    -   Not sure
+    -   Refused (coded in the datasets here as `NA`)
+    -   Excellent (coded in the datasets here as 4)
+    -   Good (coded in the datasets here as 3)
+    -   Only fair (coded in the datasets here as 2)
+    -   Poor (coded in the datasets here as 1)
+    -   Not sure (coded in the datasets here as `NA`)
 -   ECON4A: \[I expect to spend…\] Compared to what you have done in the
     past few months, do you expect to spend or save
-    -   Refused
-    -   Much more
-    -   More
-    -   About the same
-    -   Less
-    -   Much less
+    -   Refused (coded in the datasets here as `NA`)
+    -   Much more (coded in the datasets here as 5)
+    -   More (coded in the datasets here as 4)
+    -   About the same (coded in the datasets here as 3)
+    -   Less (coded in the datasets here as 2)
+    -   Much less (coded in the datasets here as 1)
 -   ECON4B: \[I expect to save…\] Compared to what you have done in the
     past few months, do you expect to spend or save
-    -   Refused
-    -   Much more
-    -   More
-    -   About the same
-    -   Less
-    -   Much less
+    -   Refused (coded in the datasets here as `NA`)
+    -   Much more (coded in the datasets here as 5)
+    -   More (coded in the datasets here as 4)
+    -   About the same (coded in the datasets here as 3)
+    -   Less (coded in the datasets here as 2)
+    -   Much less (coded in the datasets here as 1)
+
+The TAPS data yearly releases are available at
+<https://wc.wustl.edu/taps-data-archive>. I downloaded these releases
+and named the files “TAPSdataYYYY.sav”, where YYYY is replaced with the
+relevant year, then used the code in `pull-econ-questions.R` to combine,
+recode, and reshape the data in ways that may be useful. (I did not
+include those `.sav` files in this repository as collectively they are
+about 80 Mb). This repository now includes the responses to those
+questions in two formats:
+
+-   `TAPS-econ-data-long.csv`
+    -   8 columns
+        -   `WUSTLID` gives the unique respondent ID
+        -   `wave` indicates what wave the responses in each row respond
+            to
+        -   One column for each of the 6 questions described above
+    -   157572 rows
+        -   Each row corresponds to all answers to the economic
+            questions given by a respondent in a particular wave of TAPS
+-   `TAPS-econ-data-wide.csv`
+    -   2920 columns
+        -   `wave` indicates what wave the responses in each row respond
+            to
+        -   `question` indicates which of the 6 questions described
+            above the responses in each row respond to
+        -   One column for each of the 2918 TAPS respondents (the column
+            name is the respondent’s `WUSTLID`)
+    -   324 rows
+        -   Each row corresponds to all answers given to a particular
+            economic question in a particular wave of TAPS
